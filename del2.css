@@ -1,0 +1,174 @@
+/* General styles */
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: violet;
+  height: 100%;
+
+  font-family: "Roboto Mono", monospace;
+}
+
+/* General layout */
+
+.container {
+  background-color: aquamarine;
+  border: 2px solid black;
+  height: 100%;
+
+  display: grid;
+  /* gap: 10px; */
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto 90% auto;
+  grid-template-areas:
+    "header header"
+    "sidebar content"
+    "footer footer";
+}
+
+header {
+  background-color: bisque;
+  border: 2px solid black;
+
+  grid-area: header;
+}
+
+aside {
+  background-color: blueviolet;
+  border: 2px solid black;
+
+  grid-area: sidebar;
+}
+
+.content-header {
+  position: sticky;
+  top: 0;
+  height: 10%;
+  background-color: brown;
+  color: white;
+}
+
+main {
+  background-color: yellow;
+  border: 2px solid black;
+
+  grid-area: content;
+
+  /* position: relative; */
+  overflow: auto;
+}
+
+footer {
+  background-color: violet;
+  border: 2px solid black;
+
+  grid-area: footer;
+}
+
+/* Header layout */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+}
+
+nav {
+  width: 90%;
+  position: relative;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+a {
+  text-decoration: none;
+}
+
+.logo {
+  width: 4em;
+  border-radius: 50%;
+}
+
+#toggle-sidebar {
+  font-size: 1.5rem;
+}
+
+/* Toggle sidebar */
+
+.container--sidebar-hide {
+  grid-template-areas:
+    "header header"
+    "content content"
+    "footer footer";
+}
+
+.container--sidebar-hide aside {
+  display: none;
+}
+
+/* Small screens */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  row-gap: 4px;
+  position: absolute;
+  top: -15px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.hamburger-menu span {
+  display: block;
+  width: 40px;
+  height: 4px;
+  background-color: black;
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    grid-template-rows: auto 30% 60% auto;
+    grid-template-areas:
+      "header header"
+      "sidebar sidebar"
+      "content content"
+      "footer footer";
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  .container aside {
+    display: block;
+  }
+
+  .hamburger-menu {
+    display: flex;
+  }
+
+  #toggle-sidebar {
+    display: none;
+  }
+
+  .show {
+    background-color: white;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 35px;
+    right: -20px;
+  }
+}
