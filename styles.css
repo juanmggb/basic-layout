@@ -1,0 +1,148 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: aliceblue;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+
+  height: 100%;
+}
+
+.container {
+  background-color: aqua;
+  border: 2px solid black;
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: auto 80% auto;
+
+  grid-template-areas:
+    "header header"
+    "sidebar content"
+    "footer footer";
+}
+
+header {
+  background-color: violet;
+  border: 2px solid black;
+  grid-area: header;
+
+  display: flex;
+
+  padding-left: 10px;
+  align-items: center;
+}
+
+aside {
+  background-color: wheat;
+  border: 2px solid turquoise;
+  grid-area: sidebar;
+}
+
+main {
+  background-color: yellow;
+  border: 2px solid black;
+  grid-area: content;
+}
+
+footer {
+  background-color: tomato;
+  border: 2px solid black;
+  grid-area: footer;
+}
+
+.logo {
+  width: 50px;
+}
+
+nav {
+  width: 90%;
+  position: relative;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+}
+
+li a {
+  text-decoration: none;
+}
+
+/* Toggle sidebar */
+
+.container--sidebar-hidden {
+  grid-template-areas:
+    "header header"
+    "content content"
+    "footer footer";
+}
+
+.container--sidebar-hidden aside {
+  display: none;
+}
+
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+
+  position: absolute;
+  right: 10px;
+  top: -15px;
+}
+
+.hamburger-menu span {
+  display: block;
+  width: 30px;
+  height: 4px;
+  margin: 5px 0;
+  background: #000;
+}
+
+/* Small screens */
+@media (max-width: 800px) {
+  .hamburger-menu {
+    display: block;
+  }
+  nav ul {
+    display: none;
+  }
+
+  #toggle-sidebar {
+    display: none;
+  }
+
+  .show {
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    top: 30px;
+    left: -80px;
+    width: 100vw;
+    background: #fff;
+    /* text-align: center; */
+
+    z-index: 1;
+  }
+
+  .container {
+    grid-template-rows: auto 20% 60% auto;
+    grid-template-areas:
+      "header header"
+      "sidebar sidebar"
+      "content content"
+      "footer footer";
+  }
+}
