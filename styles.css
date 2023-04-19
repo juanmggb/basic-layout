@@ -43,7 +43,7 @@ header {
 
 aside {
   background-color: wheat;
-  border: 2px solid turquoise;
+  border: 2px solid black;
   grid-area: sidebar;
 }
 
@@ -51,6 +51,17 @@ main {
   background-color: yellow;
   border: 2px solid black;
   grid-area: content;
+
+  overflow: auto;
+
+  position: relative;
+}
+
+.content-header {
+  background-color: aqua;
+  height: 10%;
+  position: sticky;
+  top: 0;
 }
 
 footer {
@@ -61,6 +72,11 @@ footer {
 
 .logo {
   width: 50px;
+  border-radius: 50%;
+}
+
+#toggle-sidebar {
+  cursor: pointer;
 }
 
 nav {
@@ -72,7 +88,6 @@ nav ul {
   list-style: none;
   display: flex;
   justify-content: space-around;
-  align-content: center;
   align-items: center;
 }
 
@@ -93,6 +108,7 @@ li a {
   display: none;
 }
 
+/* Small screens */
 .hamburger-menu {
   display: none;
   cursor: pointer;
@@ -110,7 +126,6 @@ li a {
   background: #000;
 }
 
-/* Small screens */
 @media (max-width: 800px) {
   .hamburger-menu {
     display: block;
@@ -132,7 +147,6 @@ li a {
     left: -80px;
     width: 100vw;
     background: #fff;
-    /* text-align: center; */
 
     z-index: 1;
   }
